@@ -1,0 +1,12 @@
+UsePrivilegeSeparation no
+Protocol 2
+Port 2222
+ListenAddress 0.0.0.0
+
+HostKey /u01/oracle/.ssh/id_rsa
+Subsystem sftp /usr/lib/openssh/sftp-server
+UsePAM yes
+PasswordAuthentication no
+PermitRootLogin no
+PidFile /tmp/sshd.pid
+TCPKeepAlive yes
