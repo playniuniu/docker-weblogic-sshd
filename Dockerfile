@@ -53,5 +53,6 @@ RUN /u01/oracle/wlst /u01/oracle/create-wls-domain.py \
 # Expose Node Manager default port, and also default for admin and managed server 
 EXPOSE $SSH_PORT $NM_PORT $ADMIN_PORT $MS_PORT $DEBUG_PORT $SUPERVISORD_PORT
 
-ENTRYPOINT ["/u01/oracle/docker-config/entrypoint.sh"]
-CMD ["/usr/bin/supervisord", "-n", "-c", "/u01/oracle/docker-config/supervisord.conf"]
+WORKDIR $DOMAIN_HOME
+
+CMD ["/u01/oracle/docker-config/entrypoint.sh"]

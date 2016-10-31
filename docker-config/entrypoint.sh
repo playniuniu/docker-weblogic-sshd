@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 # prepare authorized_keys
 if [ -d "/sshkey/" ]; then
@@ -11,4 +12,5 @@ if [ ! -f /u01/oracle/.ssh/id_rsa ]; then
     ssh-keygen -t rsa -f /u01/oracle/.ssh/id_rsa -N ''
 fi
 
-exec "$@"
+echo "Starting supervisor..."
+exec /usr/bin/supervisord -n -c /u01/oracle/docker-config/supervisord.conf
